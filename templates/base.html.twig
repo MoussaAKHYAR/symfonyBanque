@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>L V G - {% block title %}{% endblock %} </title>
+	<title>Banque du peuple{% block title %}{% endblock %} </title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="{{asset('assets/img/icon.ico')}}" type="image/x-icon"/>
 
@@ -135,17 +135,16 @@
 						</div>
 					</div>
 					<ul class="nav nav-primary">
-						<li class="nav-item active">
-							<a href="/">
+						<li class="nav-item active" >
+							<a href="{{path('app_home')}}">
 								<i class="fas fa-home"></i>
 								<p>Tableau de bord</p>
 							</a>
-						
 						</li>
 							<li class="nav-item">
-							<a data-toggle="collapse" href="#equipement">
+							<a data-toggle="collapse" href="{{path('app_home')}}">
 								<i class="fas fa-table"></i>
-								<p>Equipements</p>
+								<p>Client Physique</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="equipement">
@@ -166,7 +165,7 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#groupe">
 								<i class="fas fa-table"></i>
-								<p>Groupe de vehicules</p>
+								<p>Entrprise</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="groupe">
@@ -187,7 +186,7 @@
 							<li class="nav-item">
 							<a data-toggle="collapse" href="#conducteur">
 								<i class="fas fa-table"></i>
-								<p>Conducteurs</p>
+								<p>Compte</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="conducteur">
@@ -205,69 +204,6 @@
 								</ul>
 							</div>
 						</li>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#fiche">
-								<i class="fas fa-table"></i>
-								<p>Fiche de sortie</p>
-								<span class="caret"></span>
-							</a>
-						<div class="collapse" id="fiche">
-							<ul class="nav nav-collapse">
-								<li>
-									<a href="tables/tables.html">
-										<span class="sub-item">Ajouter</span>
-									</a>
-								</li>
-								<li>
-									<a href="tables/datatables.html">
-										<span class="sub-item">Liste</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#vehicule">
-								<i class="fas fa-table"></i>
-								<p>Vehicules</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="vehicule">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="/addVehicule">
-											<span class="sub-item">Ajouter</span>
-										</a>
-									</li>
-									<li>
-										<a href="/listeVehicule">
-											<span class="sub-item">Liste</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#utilisateur">
-								<i class="fas fa-table"></i>
-								<p>Utilisateurs</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="utilisateur">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="/addUser">
-											<span class="sub-item">Ajouter</span>
-										</a>
-									</li>
-									<li>
-										<a href="/listeUser">
-											<span class="sub-item">Liste</span>
-										</a>
-									</li>
-								</ul>
-							</div>
 						</li>
 					</ul>
 				</div>
