@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Banque du peuple{% block title %}{% endblock %} </title>
+	<title>{% block title %}Banque du peuple{% endblock %} </title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="{{asset('assets/img/icon.ico')}}" type="image/x-icon"/>
 
@@ -31,7 +31,7 @@
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
 				
-				<a href="index.html" class="logo">
+				<a href="{{path('app_home')}}" class="logo">
 					<img src="{{asset('assets/img/logo.svg')}}" alt="Banque du peuple" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,6 @@
 
 			<!-- Navbar Header -->
 			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-				
 				<div class="container-fluid">
 					{# <div class="collapse" id="search-nav">
 						<form class="navbar-left navbar-form nav-search mr-md-3">
@@ -101,7 +100,7 @@
 		</div>
 
 		<!-- Sidebar -->
-		<div class="sidebar sidebar-style-2">			
+		<div class="sidebar sidebar-style-2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -142,20 +141,20 @@
 							</a>
 						</li>
 							<li class="nav-item">
-							<a data-toggle="collapse" href="{{path('app_home')}}">
+							<a data-toggle="collapse" href="#clientPhysique">
 								<i class="fas fa-table"></i>
 								<p>Client Physique</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="equipement">
+							<div class="collapse" id="clientPhysique">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="/addEquipement">
+										<a href="{{path('client_physique')}}">
 											<span class="sub-item">Ajouter</span>
 										</a>
 									</li>
 									<li>
-										<a href="/listeEquipement">
+										<a href="{{path('liste_client')}}">
 											<span class="sub-item">Liste</span>
 										</a>
 									</li>
@@ -165,7 +164,7 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#groupe">
 								<i class="fas fa-table"></i>
-								<p>Entrprise</p>
+								<p>Entreprise</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="groupe">
@@ -224,50 +223,48 @@
 				</div>
 			</footer>
 		</div>
-		
-		
 	</div>
 	<!--   Core JS Files   -->
-	<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
-	<script src="../assets/js/core/popper.min.js"></script>
-	<script src="../assets/js/core/bootstrap.min.js"></script>
+	<script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}"></script>
+	<script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+	<script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
 
 	<!-- jQuery UI -->
-	<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-	<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<script src="{{asset('assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+	<script src="{{asset('assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
 
 	<!-- jQuery Scrollbar -->
-	<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<script src="{{asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
 
 
 	<!-- Chart JS -->
-	<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+	<script src="{{asset('assets/js/plugin/chart.js/chart.min.js')}}"></script>
 
 	<!-- jQuery Sparkline -->
-	<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+	<script src="{{asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js')}}"></script>
 
 	<!-- Chart Circle -->
-	<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+	<script src="{{asset('assets/js/plugin/chart-circle/circles.min.js')}}"></script>
 
 	<!-- Datatables -->
-	<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+	<script src="{{asset('assets/js/plugin/datatables/datatables.min.js')}}"></script>
 
 	<!-- Bootstrap Notify -->
-	<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+	{#<script src="{{asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script> #}
 
 	<!-- jQuery Vector Maps -->
-	<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-	<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+	<script src="{{asset('assets/js/plugin/jqvmap/jquery.vmap.min.js')}}"></script>
+	<script src="{{asset('assets/js/plugin/jqvmap/maps/jquery.vmap.world.js')}}"></script>
 
 	<!-- Sweet Alert -->
-	<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+	<script src="{{asset('assets/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
 
 	<!-- Atlantis JS -->
-	<script src="../assets/js/atlantis.min.js"></script>
+	<script src="{{asset('assets/js/atlantis.min.js')}}"></script>
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="../assets/js/setting-demo.js"></script>
-	<script src="../assets/js/demo.js"></script>
+	<script src="{{asset('assets/js/setting-demo.js')}}"></script>
+	<script src="{{asset('assets/js/demo.js')}}"></script>
 	<script>
 		Circles.create({
 			id:'circles-1',

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} liste Client Physique{% endblock %}
+
+{% block content %}
+  <div class="panel-header bg-primary-gradient">
+          <div class="page-inner py-5">
+              <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                  <div>
+                      <h2 class="text-white pb-2 fw-bold">Liste des clients physique</h2>
+                  </div>
+              </div>
+          </div>
+  </div>
+  <div class="card">
+      <div class="card-header">
+          <div class="card-title">Liste des clients</div>
+      </div>
+      <div class="card-body">
+          <table class="table table-head-bg-success">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Matricule</th>
+                    <th scope="col">CIN</th>
+                    <th scope="col">Sexe</th>
+                    <th scope="col">Date de Naissance</th>
+                    <th scope="col">Telephone</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for client in clients %}
+                <tr>
+                  <td>{{client.id}}</td>
+                  <td>{{client.nom}}</td>
+                  <td>{{client.prenom}}</td>
+                  <td>{{client.matricule}}</td>
+                  <td>{{client.cin}}</td>
+                  <td>{{client.sexe}}</td>
+                  <td>{{client.dateNaissance|date('d/m/y')}}</td>
+                  <td>{{client.telephone}}</td>
+                  <td>{{client.adresse}}</td>
+                  <td>{{client.email}}</td>
+                  <td>
+                      <a href="#" class="btn btn-dark">Editer</a>
+                  </td>
+                  <td>
+                      <a href="#" class="btn btn-danger">Supprimer</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+  </div>
+{% endblock %}
+
