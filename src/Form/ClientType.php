@@ -26,7 +26,7 @@ class ClientType extends AbstractType
             ->add('telephone',TextType::class,array('label'=>'Telephone','attr'=>array('class'=>'form-control')))
             ->add('adresse',TextType::class,array('label'=>'Adresse','attr'=>array('class'=>'form-control')))
             ->add('email',EmailType::class,array('label'=>'Email','attr'=>array('class'=>'form-control')))
-            ->add('valider',SubmitType::class,array('attr'=>array('class'=>'btn btn-success')))
+           // ->add('valider',SubmitType::class,array('attr'=>array('class'=>'btn btn-success form-group')))
         ;
     }
 

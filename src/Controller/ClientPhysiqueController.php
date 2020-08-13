@@ -17,13 +17,10 @@ class ClientPhysiqueController extends AbstractController
     public function add(Request $request)
     {
         $client = new Client;
-
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $client = $form->getData();
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($client);
             $entityManager->flush();
@@ -40,9 +37,6 @@ class ClientPhysiqueController extends AbstractController
     public function liste()
     {
         $em = $this->getDoctrine()->getManager();
-        // $client = new Client();
-        // $form = $this->createForm(ClientType::class, $client);
-        // $data['form'] = $form->createView();
         $data['clients'] = $em->getRepository(Client::class)->findAll();
         return $this->render('client_physique/liste.html.twig', $data);
     }
