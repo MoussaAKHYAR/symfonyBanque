@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CompteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,7 +35,7 @@ class Compte
     private $solde;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string")
      */
     private $dateOuverture;
 
@@ -78,19 +80,34 @@ class Compte
     private $remuneration;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $dateDebut;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $dateFin;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToMany(targetEntity=TypeCompte::class, mappedBy="comptes")
      */
     private $typeCompte;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="comptes")
+     */
+    private $clientPhysique;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Entreprise::class, inversedBy="comptes")
+     */
+    private $entreprise;
+
+    public function __construct()
+    {
+        $this->typeCompte = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -133,12 +150,12 @@ class Compte
         return $this;
     }
 
-    public function getDateOuverture(): ?\DateTimeInterface
+    public function getDateOuverture(): ?string
     {
         return $this->dateOuverture;
     }
 
-    public function setDateOuverture(\DateTimeInterface $dateOuverture): self
+    public function setDateOuverture(?string $dateOuverture): self
     {
         $this->dateOuverture = $dateOuverture;
 
@@ -241,39 +258,83 @@ class Compte
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
+    public function getDateDebut(): ?string
     {
         return $this->dateDebut;
     }
 
-    public function setDateDebut(?\DateTimeInterface $dateDebut): self
+    public function setDateDebut(?string $dateDebut): self
     {
         $this->dateDebut = $dateDebut;
 
         return $this;
     }
 
-    public function getDateFin(): ?\DateTimeInterface
+    public function getDateFin(): ?string
     {
         return $this->dateFin;
     }
 
-    public function setDateFin(?\DateTimeInterface $dateFin): self
+    public function setDateFin(?string $dateFin): self
     {
         $this->dateFin = $dateFin;
 
         return $this;
     }
 
-    public function getTypeCompte(): ?string
+    /**
+     * @return Collection|TypeCompte[]
+     */
+    public function getTypeCompte(): Collection
     {
         return $this->typeCompte;
     }
 
-    public function setTypeCompte(string $typeCompte): self
+    public function addTypeCompte(TypeCompte $typeCompte): self
     {
-        $this->typeCompte = $typeCompte;
+        if (!$this->typeCompte->contains($typeCompte)) {
+            $this->typeCompte[] = $typeCompte;
+            $typeCompte->setComptes($this);
+        }
 
         return $this;
     }
+
+    public function removeTypeCompte(TypeCompte $typeCompte): self
+    {
+        if ($this->typeCompte->contains($typeCompte)) {
+            $this->typeCompte->removeElement($typeCompte);
+            // set the owning side to null (unless already changed)
+            if ($typeCompte->getComptes() === $this) {
+                $typeCompte->setComptes(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getEntreprise(): ?Entreprise
+    {
+        return $this->entreprise;
+    }
+
+    public function setEntreprise(?Entreprise $entreprise): self
+    {
+        $this->entreprise = $entreprise;
+
+        return $this;
+    }
+
+    public function getClientPhysique(): ?Client
+    {
+        return $this->clientPhysique;
+    }
+
+    public function setClientPhysique(?Client $clientPhysique): self
+    {
+        $this->clientPhysique = $clientPhysique;
+
+        return $this;
+    }
+
 }

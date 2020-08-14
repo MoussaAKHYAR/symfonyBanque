@@ -22,6 +22,12 @@ class TypeCompte
      */
     private $libelle;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Compte::class, inversedBy="typeCompte")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $comptes;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +41,18 @@ class TypeCompte
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    public function getComptes(): ?Compte
+    {
+        return $this->comptes;
+    }
+
+    public function setComptes(?Compte $comptes): self
+    {
+        $this->comptes = $comptes;
 
         return $this;
     }

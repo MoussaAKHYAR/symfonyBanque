@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ajout compte{% endblock %}
+
+{% block content %}
+<div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div>
+                    <h2 class="text-white pb-2 fw-bold">Ajouter un compte</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Formulaire d'ajout</div>
+                    </div>
+                        <div class="card-body">
+                            {{ form_start(form, {'action':path('compte'),'method':'POST','attr': {'class': 'row'}})}}
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.numero) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.rib) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.solde) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.dateOuverture) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.raisonSocial) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.salaire) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.nomEmployeur) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.telEmployeur) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.numerIdentification) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.agios) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.fraisOuverture) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.remuneration) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.dateDebut) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.dateFin) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.clientPhysique) }}</div>
+                                <div class="col-md-6 col-lg-4 ">{{ form_row(form.entreprise) }}</div>
+                                <div class="col-md-6 form-group">
+                                    <button class="btn btn-success">Enregistrer</button>
+                                    <button type="reset" class="btn btn-danger">Annuler</button>
+                                </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+    </div>
+{% endblock %}
+
+

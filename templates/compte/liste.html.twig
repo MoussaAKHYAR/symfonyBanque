@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} liste Client Physique{% endblock %}
+
+{% block content %}
+  <div class="panel-header bg-primary-gradient">
+          <div class="page-inner py-5">
+              <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                  <div>
+                      <h2 class="text-white pb-2 fw-bold">Liste des clients physique</h2>
+                  </div>
+              </div>
+          </div>
+  </div>
+  <div class="card">
+      <div class="card-header">
+          <div class="card-title">Liste des clients</div>
+      </div>
+      <div class="card-body">
+          <table class="table table-head-bg-success">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Numero</th>
+                    <th scope="col">RIB</th>
+                    <th scope="col">Solde</th>
+                    <th scope="col">Date d'ouverture</th>
+                    <th scope="col">Raison social</th>
+                    <th scope="col">Salaire</th>
+                    <th scope="col">Nom Employeur</th>
+                    <th scope="col">Telephone Employeur</th>
+                    <th scope="col">Numero d'identification</th>
+                    <th scope="col">Agios</th>
+                    <th scope="col">Frais ouverture</th>
+                    <th scope="col">Renumeration</th>
+                    <th scope="col">Date debut</th>
+                    <th scope="col">Date fin</th>
+                    <th scope="col">Client physique</th>
+                    <th scope="col">Entreprise</th>
+                    <th scope="col">Action</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for compte in comptes %}
+                <tr>
+                  <td>{{compte.id}}</td>
+                  <td>{{compte.numero}}</td>
+                  <td>{{compte.rib}}</td>
+                  <td>{{compte.solde}}</td>
+                  <td>{{compte.dateOuverture}}</td>
+                  <td>{{compte.raisonSocial}}</td>
+                  <td>{{compte.salaire}}</td>
+                  <td>{{compte.nomEmployeur}}</td>
+                  <td>{{compte.telEmployeur}}</td>
+                  <td>{{compte.numerIdentification}}</td>
+                  <td>{{compte.agios}}</td>
+                  <td>{{compte.fraisOuverture}}</td>
+                  <td>{{compte.remuneration}}</td>
+                  <td>{{compte.dateDebut}}</td>
+                  <td>{{compte.dateFin}}</td>
+                  <td>{{compte.clientPhysique.nom}}</td>
+                  <td>{{compte.entreprise.nomEntreprise}}</td>
+                  <td>
+                      <a href="#" class="btn btn-dark">Editer</a>
+                  </td>
+                  <td>
+                      <a href="#" class="btn btn-danger">Supprimer</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+  </div>
+{% endblock %}
+
